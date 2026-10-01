@@ -25,6 +25,15 @@ public class RequestMapping {
         mappings.put("/user/update/form", new UpdateUserFormController());
         mappings.put("/user/update", new UpdateUserController());
         mappings.put("/user/delete", new DeleteUserController());
+        mappings.put("/user/mypage", new MyPageController());
+        mappings.put("/user/profile/update/form", new UpdateProfileFormController());
+        mappings.put("/user/profile/update", new UpdateProfileController());
+        mappings.put("/user/password/update/form", new UpdatePasswordFormController());
+        mappings.put("/user/password/update", new UpdatePasswordController());
+        mappings.put("/user/withdraw/form", new WithdrawUserFormController());
+        mappings.put("/user/withdraw", new WithdrawUserController());
+        mappings.put("/user/account/update/form", new UpdateMyInfoFormController());
+        mappings.put("/user/account/update", new UpdateMyInfoController());
         
         logger.info("Initialized Request Mapping!");
     }

@@ -83,7 +83,9 @@
     
     <div class="buttons">
       <button type="button" onClick="userModify()">수정</button>
-      <a class="btn" href="<c:url value='/user/list' />">목록</a>
+      <c:if test="${sessionScope.userId eq 'admin'}">
+    <a href="<c:url value='/user/list' />">목록</a>
+</c:if>
     </div>
   </form>
 </body>

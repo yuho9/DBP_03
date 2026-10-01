@@ -40,7 +40,14 @@ public class UserManager {
 
 	public int update(User user) throws SQLException {
 		return userDAO.update(user);
-	}	
+	}
+	
+	/**
+	 * 사용자의 프로필 정보를 수정
+	 */
+	public int updateProfile(User user) throws SQLException {
+	    return userDAO.updateProfile(user);
+	}
 
 	public int remove(String userId) throws SQLException {
 		return userDAO.remove(userId);
@@ -81,5 +88,11 @@ public class UserManager {
 	
 	public UserDAO getUserDAO() {
 		return this.userDAO;
+	}
+	//비밀번호 변경
+	public int updatePassword(String userId, String newPassword)
+	        throws SQLException {
+
+	    return userDAO.updatePassword(userId, newPassword);
 	}
 }

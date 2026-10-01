@@ -64,6 +64,48 @@ public class UserDAO {
 		}		
 		return 0;
 	}
+	
+	/**
+	 * 사용자의 프로필 정보를 수정
+	 */
+	public int updateProfile(User user) throws SQLException {
+
+	    String sql = "UPDATE USERINFO "
+	            + "SET nickname=?, major=?, grade=?, "
+	            + "desiredPart=?, desiredProject=?, skills=? "
+	            + "WHERE userId=?";
+
+	    Object[] param = new Object[] {
+	            user.getNickname(),
+	            user.getMajor(),
+	            user.getGrade(),
+	            user.getDesiredPart(),
+	            user.getDesiredProject(),
+	            user.getSkills(),
+	            user.getUserId()
+	    };
+
+	    jdbcUtil.setSqlAndParameters(sql, param);
+
+	    try {
+
+	        int result = jdbcUtil.executeUpdate();
+
+	        return result;
+
+	    } catch (Exception ex) {
+
+	        jdbcUtil.rollback();
+	        ex.printStackTrace();
+
+	    } finally {
+
+	        jdbcUtil.commit();
+	        jdbcUtil.close();
+	    }
+
+	    return 0;
+	}
 
 	/**
 	 * 사용자 ID에 해당하는 사용자를 삭제.
@@ -91,28 +133,53 @@ public class UserDAO {
 	 * 저장하여 반환.
 	 */
 	public User findUser(String userId) throws SQLException {
-        String sql = "SELECT password, name, email, phone "
-        			+ "FROM USERINFO "
-        			+ "WHERE userid=? ";              
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil에 query문과 매개 변수 설정
 
-		try {
-			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
-			if (rs.next()) {						// 학생 정보 발견
-				User user = new User(		// User 객체를 생성하여 학생 정보를 저장
-					userId,
-					rs.getString("password"),
-					rs.getString("name"),
-					rs.getString("email"),
-					rs.getString("phone"));
-				return user;
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			jdbcUtil.close();		// resource 반환
-		}
-		return null;
+	    String sql = "SELECT password, name, email, phone, "
+	            + "nickname, major, grade, desiredPart, desiredProject, skills "
+	            + "FROM USERINFO "
+	            + "WHERE userid=?";
+
+	    jdbcUtil.setSqlAndParameters(
+	            sql,
+	            new Object[] {userId}
+	    );
+
+	    try {
+
+	        ResultSet rs = jdbcUtil.executeQuery();
+
+	        if (rs.next()) {
+
+	            // 기존 회원 정보
+	            User user = new User(
+	                    userId,
+	                    rs.getString("password"),
+	                    rs.getString("name"),
+	                    rs.getString("email"),
+	                    rs.getString("phone")
+	            );
+
+	            // 프로필 정보
+	            user.setNickname(rs.getString("nickname"));
+	            user.setMajor(rs.getString("major"));
+	            user.setGrade(rs.getString("grade"));
+	            user.setDesiredPart(rs.getString("desiredPart"));
+	            user.setDesiredProject(rs.getString("desiredProject"));
+	            user.setSkills(rs.getString("skills"));
+
+	            return user;
+	        }
+
+	    } catch (Exception ex) {
+
+	        ex.printStackTrace();
+
+	    } finally {
+
+	        jdbcUtil.close();
+	    }
+
+	    return null;
 	}
 
 	/**
@@ -201,5 +268,33 @@ public class UserDAO {
 			jdbcUtil.close();		// resource 반환
 		}
 		return false;
+	}
+	
+	//비밀번호 변경
+	public int updatePassword(String userId, String newPassword) throws SQLException {
+
+	    String sql = "UPDATE UserInfo SET password=? WHERE userId=?";
+
+	    Object[] param = new Object[] {
+	        newPassword,
+	        userId
+	    };
+
+	    jdbcUtil.setSqlAndParameters(sql, param);
+
+	    try {
+	        int result = jdbcUtil.executeUpdate();
+	        return result;
+
+	    } catch (Exception ex) {
+	        jdbcUtil.rollback();
+	        ex.printStackTrace();
+
+	    } finally {
+	        jdbcUtil.commit();
+	        jdbcUtil.close();
+	    }
+
+	    return 0;
 	}
 }

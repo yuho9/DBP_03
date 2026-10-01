@@ -10,6 +10,14 @@ public class User {
 	private String email;
 	private String phone;
 
+	//추가
+	private String nickname;
+	private String major;
+	private String grade;
+	private String desiredPart;
+	private String desiredProject;
+	private String skills;
+	
 	public User() { }	// 기본 생성자
 	
 	public User(String userId, String password, String name, String email, String phone) {
@@ -65,6 +73,55 @@ public class User {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	
+	//추가
+	public String getNickname() {
+	    return nickname;
+	}
+
+	public void setNickname(String nickname) {
+	    this.nickname = nickname;
+	}
+
+	public String getMajor() {
+	    return major;
+	}
+
+	public void setMajor(String major) {
+	    this.major = major;
+	}
+
+	public String getGrade() {
+	    return grade;
+	}
+
+	public void setGrade(String grade) {
+	    this.grade = grade;
+	}
+
+	public String getDesiredPart() {
+	    return desiredPart;
+	}
+
+	public void setDesiredPart(String desiredPart) {
+	    this.desiredPart = desiredPart;
+	}
+
+	public String getDesiredProject() {
+	    return desiredProject;
+	}
+
+	public void setDesiredProject(String desiredProject) {
+	    this.desiredProject = desiredProject;
+	}
+
+	public String getSkills() {
+	    return skills;
+	}
+
+	public void setSkills(String skills) {
+	    this.skills = skills;
 	}
 
 	/* 비밀번호 검사 */

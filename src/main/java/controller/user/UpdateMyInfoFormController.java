@@ -1,0 +1,36 @@
+package controller.user;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+import controller.Controller;
+import model.User;
+import model.service.UserManager;
+
+public class UpdateMyInfoFormController implements Controller {
+
+    @Override
+    public String execute(HttpServletRequest request,
+                          HttpServletResponse response) throws Exception {
+
+        HttpSession session = request.getSession();
+
+        // 로그인하지 않은 경우
+        if (!UserSessionUtils.hasLogined(session)) {
+            return "redirect:/user/login/form";
+        }
+
+        // 현재 로그인한 사용자 ID
+        String userId = UserSessionUtils.getLoginUserId(session);
+
+        UserManager manager = UserManager.getInstance();
+
+        // 현재 로그인한 사용자 정보 조회
+        User user = manager.findUser(userId);
+
+        request.setAttribute("user", user);
+
+        return "/user/updateMyInfoForm.jsp";
+    }
+}

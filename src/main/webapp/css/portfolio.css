@@ -1,0 +1,926 @@
+/* =========================
+   공통
+   ========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: white;
+}
+
+
+/* =========================
+   Header
+   ========================= */
+
+.header {
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 40px;
+
+    border-bottom: 1px solid #ddd;
+
+    background-color: white;
+}
+
+.logo {
+    margin-right: 50px;
+
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.nav {
+    display: flex;
+    gap: 35px;
+}
+
+.nav a {
+    color: #333;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    color: #000;
+}
+
+.login-area {
+    margin-left: auto;
+}
+
+.login-button {
+    padding: 10px 22px;
+
+    border: 1px solid #333;
+    border-radius: 6px;
+
+    color: #333;
+    background-color: white;
+
+    font-size: 14px;
+
+    text-decoration: none;
+}
+
+.login-button:hover {
+    color: white;
+    background-color: #333;
+}
+
+
+/* =========================
+   전체 Portfolio 영역
+   ========================= */
+
+.portfolio-container {
+    width: 1000px;
+    margin: 60px auto 100px;
+}
+
+.page-title {
+    margin: 0 0 30px;
+    font-size: 30px;
+}
+
+
+/* =========================
+   Main Portfolio
+   portfolio.jsp
+   ========================= */
+
+.main-portfolio {
+    display: grid;
+
+    grid-template-columns: 1fr 1.5fr 1fr;
+
+    gap: 40px;
+
+    min-height: 380px;
+
+    padding: 35px;
+
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.portfolio-column {
+    display: flex;
+    flex-direction: column;
+
+    gap: 45px;
+}
+
+.portfolio-section h2 {
+    margin: 0 0 20px;
+
+    padding-bottom: 10px;
+
+    border-bottom: 2px solid #333;
+
+    font-size: 21px;
+}
+
+.portfolio-section h3 {
+    margin: 0 0 10px;
+    font-size: 17px;
+}
+
+.history-item {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.history-item span {
+    color: #777;
+    font-size: 13px;
+}
+
+.project-period {
+    color: #777;
+    font-size: 13px;
+}
+
+.project-description {
+    min-height: 80px;
+    line-height: 1.6;
+}
+
+.project-link,
+.external-link {
+    display: block;
+
+    margin: 10px 0;
+
+    color: #333;
+}
+
+.file-link {
+    display: inline-block;
+
+    margin-top: 10px;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   Portfolio 목록
+   ========================= */
+
+.portfolio-list-section {
+    margin-top: 80px;
+}
+
+.list-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.list-header h2 {
+    margin: 0;
+    font-size: 26px;
+}
+
+.create-button {
+    padding: 11px 24px;
+
+    border: 1px solid #333;
+    border-radius: 6px;
+
+    color: #333;
+
+    text-decoration: none;
+}
+
+.create-button:hover {
+    color: white;
+    background-color: #333;
+}
+
+
+/* =========================
+   Portfolio Table
+   ========================= */
+
+.portfolio-table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+.portfolio-table th {
+    padding: 15px;
+
+    border-top: 2px solid #333;
+    border-bottom: 1px solid #333;
+
+    font-size: 15px;
+}
+
+.portfolio-table td {
+    height: 105px;
+
+    padding: 20px 15px;
+
+    border-bottom: 1px solid #ddd;
+
+    text-align: center;
+    vertical-align: middle;
+}
+
+.portfolio-name {
+    text-align: left !important;
+
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   Main Star
+   ========================= */
+
+.main-star {
+    border: none;
+    background: none;
+
+    font-size: 28px;
+
+    cursor: pointer;
+}
+
+.main-star.active {
+    color: #f0a000;
+}
+
+
+/* =========================
+   관리 버튼
+   ========================= */
+
+.manage-buttons {
+    text-align: center;
+}
+
+.manage-buttons button {
+    margin: 0 4px;
+
+    padding: 7px 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    background-color: white;
+
+    cursor: pointer;
+}
+
+.manage-buttons button:hover {
+    background-color: #f5f5f5;
+}
+
+
+/* =========================
+   Portfolio 생성 화면
+   ========================= */
+
+.form-title-area {
+    margin-bottom: 35px;
+}
+
+.form-title-area .page-title {
+    margin-bottom: 10px;
+}
+
+.form-title-area p {
+    margin: 0;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+.portfolio-form {
+    width: 100%;
+}
+
+
+/* =========================
+   Form Section
+   ========================= */
+
+.form-section {
+    margin-bottom: 30px;
+
+    padding: 30px;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    background-color: white;
+}
+
+.form-section h2 {
+    margin: 0 0 20px;
+
+    font-size: 20px;
+}
+
+
+/* =========================
+   Section 제목
+   ========================= */
+
+.section-title {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.section-title h2 {
+    margin: 0;
+}
+
+
+/* =========================
+   Label
+   ========================= */
+
+.text-field,
+.date-field,
+.file-field,
+.textarea-field,
+.project-name-field {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.text-field label,
+.date-field label,
+.file-field label,
+.textarea-field label,
+.project-name-field label {
+    color: #666;
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   Input
+   ========================= */
+
+.text-field input,
+.project-name-field input,
+.full-input {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.full-input {
+    display: block;
+}
+
+
+/* =========================
+   날짜
+   ========================= */
+
+.date-range,
+.project-date-area {
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 10px;
+}
+
+.date-field input[type="date"] {
+    padding: 11px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    background-color: white;
+
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.date-separator {
+    padding-bottom: 12px;
+
+    color: #777;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   학력
+   ========================= */
+
+.education-form-row {
+    display: grid;
+
+    grid-template-columns: 1.6fr 1fr 1fr;
+
+    gap: 20px;
+
+    align-items: end;
+}
+
+
+/* =========================
+   수상 이력
+   ========================= */
+
+.award-form-row {
+    display: grid;
+
+    grid-template-columns: 0.8fr 1fr 1.5fr;
+
+    gap: 20px;
+
+    align-items: end;
+}
+
+
+/* =========================
+   프로젝트
+   ========================= */
+
+.project-form-box {
+    padding: 25px;
+
+    border: 1px solid #eee;
+    border-radius: 6px;
+
+    background-color: #fafafa;
+}
+
+.project-name-field {
+    margin-bottom: 20px;
+}
+
+.project-date-area {
+    margin-bottom: 20px;
+}
+
+.textarea-field {
+    margin-bottom: 20px;
+}
+
+.textarea-field textarea {
+    width: 100%;
+    min-height: 130px;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    resize: vertical;
+
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.project-bottom-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+
+    align-items: end;
+}
+
+.file-field input[type="file"] {
+    min-height: 42px;
+
+    padding: 8px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    background-color: white;
+}
+
+
+/* =========================
+   활동
+   ========================= */
+
+.activity-form-row {
+    display: grid;
+
+    grid-template-columns: 1.6fr 1fr 1.3fr;
+
+    gap: 20px;
+
+    align-items: end;
+}
+
+
+/* =========================
+   GitHub / Blog
+   ========================= */
+
+.link-form-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+
+/* =========================
+   + 추가 버튼
+   ========================= */
+
+.small-button {
+    padding: 7px 14px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    background-color: white;
+
+    cursor: pointer;
+}
+
+.small-button:hover {
+    background-color: #f5f5f5;
+}
+
+
+/* =========================
+   동적으로 추가된 항목
+   ========================= */
+
+.education-item,
+.award-item,
+.project-item,
+.activity-item {
+    margin-top: 25px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #eee;
+}
+
+
+/* 첫 번째 항목에는 선 없음 */
+
+.education-item:first-child,
+.award-item:first-child,
+.project-item:first-child,
+.activity-item:first-child {
+    margin-top: 0;
+
+    padding-top: 0;
+
+    border-top: none;
+}
+
+
+/* =========================
+   삭제 버튼
+   ========================= */
+
+.item-delete-area {
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-bottom: 12px;
+}
+
+.delete-item-button {
+    padding: 6px 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    color: #555;
+    background-color: white;
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+.delete-item-button:hover {
+    background-color: #f5f5f5;
+}
+
+
+/* =========================
+   하단 버튼
+   ========================= */
+
+.form-buttons {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 40px;
+}
+
+.cancel-button,
+.save-button {
+    padding: 12px 25px;
+
+    border: 1px solid #333;
+    border-radius: 6px;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+.cancel-button {
+    color: #333;
+    background-color: white;
+}
+
+.cancel-button:hover {
+    background-color: #f5f5f5;
+}
+
+.save-button {
+    color: white;
+    background-color: #333;
+}
+
+.save-button:hover {
+    background-color: #555;
+}
+
+/* ========================================
+   포트폴리오 순서 변경
+   ======================================== */
+
+.list-title-area {
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+/* 순서 변경 체크박스 */
+
+.order-change-label {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    color: #666;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+.order-change-label input {
+    width: 16px;
+    height: 16px;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   드래그 열
+   ========================= */
+
+.drag-column,
+.drag-cell {
+    width: 45px;
+
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+
+
+/*
+ * 평소에는 ☰ 숨김
+ */
+
+.drag-handle {
+    display: none;
+
+    color: #777;
+
+    font-size: 24px;
+
+    cursor: grab;
+
+    user-select: none;
+}
+
+
+/*
+ * 순서 변경 모드에서만 표시
+ */
+
+.order-mode .drag-handle {
+    display: inline-block;
+}
+
+
+.order-mode .drag-handle:hover {
+    color: #222;
+}
+
+
+.order-mode .drag-handle:active {
+    cursor: grabbing;
+}
+
+
+/* =========================
+   드래그 중인 행
+   ========================= */
+
+.portfolio-row.dragging {
+    opacity: 0.45;
+
+    background-color: #f5f5f5;
+}
+
+
+/*
+ * 순서 변경 모드에서는
+ * 행을 이동할 수 있다는 표시
+ */
+
+.order-mode .portfolio-row {
+    cursor: move;
+}
+/* =========================
+   목록 상단 버튼
+   ========================= */
+
+.list-buttons {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+/* 목록 오른쪽 버튼 영역 */
+.list-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* 생성하기 / 삭제하기 버튼 동일한 디자인 */
+.create-button,
+.bulk-delete-button {
+    padding: 11px 24px;
+
+    border: 1px solid #333;
+    border-radius: 6px;
+
+    color: #333;
+    background-color: white;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+
+/* 마우스를 올렸을 때 */
+.create-button:hover,
+.bulk-delete-button:hover {
+    color: white;
+    background-color: #333;
+}
+
+/* =========================
+   보유기술
+   ========================= */
+
+.skill-input-area {
+    display: flex;
+    gap: 10px;
+}
+
+.skill-input {
+    flex: 1;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    font-family: inherit;
+    font-size: 14px;
+}
+
+
+/* 기술 목록 */
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 18px;
+}
+
+
+/* 기술 하나 */
+
+.skill-tag {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 20px;
+
+    background-color: #f7f7f7;
+
+    font-size: 14px;
+}
+
+
+/* X 버튼 */
+
+.skill-tag button {
+    padding: 0;
+
+    border: none;
+
+    color: #777;
+    background: none;
+
+    font-size: 18px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.skill-tag button:hover {
+    color: #222;
+}
